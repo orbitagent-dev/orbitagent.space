@@ -59,6 +59,7 @@ img { max-width: 100%; height: auto; display: block; }
 .logotype { letter-spacing: .02em; white-space: nowrap; }
 .logotype b { font-weight: 700; color: #fff; }
 .logotype i { font-style: italic; font-weight: 400; color: #9aa1b8; }
+.logotype i, .logotype b.t { margin-left: .28em; } /* ORBITA gen T: spazio dopo ORBITA e dopo gen */
 .logotype b.t { color: #ff3b3b; }
 .top nav { display: flex; gap: 18px; flex-wrap: wrap; font-size: .95rem; }
 .top nav a { color: var(--muted); }
