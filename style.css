@@ -21,20 +21,30 @@ body {
   overflow-x: hidden;
   position: relative;
 }
-/* deep space: nebulae + two star layers, fixed behind the page */
-body::before, body::after { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; }
-body::before {
+/* deep space: static nebulae (body::before) + a slowly rotating star sky (.sky) */
+body::before { content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
   background:
-    url("stars-1.svg") 0 0 / 1200px 1200px repeat,
     radial-gradient(900px 520px at 78% 8%, rgba(88, 76, 220, .30), transparent 65%),
     radial-gradient(700px 480px at 8% 30%, rgba(30, 150, 160, .20), transparent 65%),
     radial-gradient(800px 600px at 60% 85%, rgba(170, 60, 160, .14), transparent 65%),
     radial-gradient(1400px 900px at 50% 50%, #0b0e22 0%, #05060d 70%);
 }
-body::after {
-  background: url("stars-2.svg?v=3") 300px 200px / 1800px 1800px repeat;
+/* 150vmax square centred on the viewport: covers it at any angle (diagonal <= 1.42 vmax).
+   Only transform and opacity are animated, so the GPU does all the work. */
+.sky {
+  position: fixed; z-index: -1; pointer-events: none;
+  left: 50%; top: 50%; width: 150vmax; height: 150vmax; margin: -75vmax 0 0 -75vmax;
+  background: url("stars-1.svg") 0 0 / 1200px 1200px repeat;
+  animation: orbit 360s linear infinite;
+  will-change: transform;
 }
-@media (prefers-reduced-motion: reduce) { body::after { background-image: url("stars-2-static.svg?v=3"); } }
+.sky i { position: absolute; inset: 0; background: 300px 200px / 1800px 1800px repeat; animation: twinkle ease-in-out infinite alternate; will-change: opacity; }
+.sky i:nth-child(1) { background-image: url("stars-2a.svg"); animation-duration: 3.1s; }
+.sky i:nth-child(2) { background-image: url("stars-2b.svg"); animation-duration: 4.7s; animation-delay: -2.3s; }
+.sky i:nth-child(3) { background-image: url("stars-2c.svg"); animation-duration: 6.3s; animation-delay: -4.1s; }
+@keyframes orbit { to { transform: rotate(360deg); } }
+@keyframes twinkle { from { opacity: .2; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .sky, .sky i { animation: none; } .sky i { opacity: .85; } }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 img { max-width: 100%; height: auto; display: block; }
