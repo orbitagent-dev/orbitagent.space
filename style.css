@@ -14,13 +14,29 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: radial-gradient(1200px 600px at 70% -10%, #1b2150 0%, transparent 60%),
-              radial-gradient(900px 500px at -10% 20%, #10343a 0%, transparent 55%), var(--bg);
+  background: #05060d;
   color: var(--text);
   font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  position: relative;
 }
+/* deep space: nebulae + two star layers, fixed behind the page */
+body::before, body::after { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+body::before {
+  background:
+    url("stars-1.svg") 0 0 / 1200px 1200px repeat,
+    radial-gradient(900px 520px at 78% 8%, rgba(88, 76, 220, .30), transparent 65%),
+    radial-gradient(700px 480px at 8% 30%, rgba(30, 150, 160, .20), transparent 65%),
+    radial-gradient(800px 600px at 60% 85%, rgba(170, 60, 160, .14), transparent 65%),
+    radial-gradient(1400px 900px at 50% 50%, #0b0e22 0%, #05060d 70%);
+}
+body::after {
+  background: url("stars-2.svg") 300px 200px / 1800px 1800px repeat;
+  animation: twinkle 7s ease-in-out infinite alternate;
+}
+@keyframes twinkle { from { opacity: .55; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { body::after { animation: none; } }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 img { max-width: 100%; height: auto; display: block; }
@@ -63,7 +79,7 @@ p { margin: 0 0 12px; }
 .pillar p { color: var(--muted); margin: 0; }
 
 .feats { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
-.feat { display: flex; gap: 16px; padding: 20px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(20, 24, 40, .6); }
+.feat { display: flex; gap: 16px; padding: 20px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(16, 19, 34, .88); backdrop-filter: blur(6px); }
 .feat i { flex: none; width: 40px; height: 40px; display: grid; place-items: center; border-radius: 10px; background: rgba(124, 140, 255, .12); color: var(--accent); }
 .feat p { color: var(--muted); margin: 0; font-size: .96rem; }
 
