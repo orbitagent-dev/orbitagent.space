@@ -71,6 +71,11 @@ h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin: 0 0 8px; letter-spacing: -
 h3 { margin: 0 0 6px; font-size: 1.08rem; }
 p { margin: 0 0 12px; }
 
+.engines { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 14px; margin-top: 40px; color: var(--muted); font-size: .95rem; }
+.engines a { padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; background: rgba(16, 19, 34, .8); color: var(--text); font-weight: 600; }
+.engines a:hover { border-color: var(--accent); text-decoration: none; }
+.engines .more { font-size: .88rem; }
+.engines + .pillars { margin-top: 48px; }
 .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
 .pillar { background: linear-gradient(180deg, var(--card), var(--bg2)); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
 .pillar i { font-size: 1.4rem; color: var(--accent); margin-bottom: 14px; }
