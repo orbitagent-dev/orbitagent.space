@@ -32,11 +32,9 @@ body::before {
     radial-gradient(1400px 900px at 50% 50%, #0b0e22 0%, #05060d 70%);
 }
 body::after {
-  background: url("stars-2.svg") 300px 200px / 1800px 1800px repeat;
-  animation: twinkle 7s ease-in-out infinite alternate;
+  background: url("stars-2.svg?v=3") 300px 200px / 1800px 1800px repeat;
 }
-@keyframes twinkle { from { opacity: .55; } to { opacity: 1; } }
-@media (prefers-reduced-motion: reduce) { body::after { animation: none; } }
+@media (prefers-reduced-motion: reduce) { body::after { background-image: url("stars-2-static.svg?v=3"); } }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 img { max-width: 100%; height: auto; display: block; }
