@@ -55,6 +55,11 @@ img { max-width: 100%; height: auto; display: block; }
 .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 20px; padding-bottom: 20px; flex-wrap: wrap; }
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.2rem; color: var(--text); letter-spacing: .01em; }
 .brand:hover { text-decoration: none; }
+/* Logotipo ORBITAgenT: ORBITA bianco bold, gen grigio corsivo, T rossa bold */
+.logotype { letter-spacing: .02em; white-space: nowrap; }
+.logotype b { font-weight: 700; color: #fff; }
+.logotype i { font-style: italic; font-weight: 400; color: #9aa1b8; }
+.logotype b.t { color: #ff3b3b; }
 .top nav { display: flex; gap: 18px; flex-wrap: wrap; font-size: .95rem; }
 .top nav a { color: var(--muted); }
 .top nav a:hover { color: var(--text); text-decoration: none; }
